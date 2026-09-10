@@ -11,12 +11,18 @@ public class TwinStickMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float playerSpeed = 5f;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackDuration = 0.2f;
+    [SerializeField] private float knockbackDecay = 8f;
+
     [Header("Aim")]
     [SerializeField] private float controllerDeadzone = 0.1f;
     [SerializeField] private float gamepadRotateSmoothing = 1000f;
 
     [SerializeField] private bool isGamepad;
 
+    private Vector3 knockbackVelocity;
+    private float knockbackTimer;
 
     private Vector2 movement;
     private Vector2 aim;
@@ -72,7 +78,23 @@ public class TwinStickMovement : MonoBehaviour
     {
         //GPT - TENTATIVA DE TRANSFORMAÇÃO PARA 2D
         Vector3 move = new Vector3(movement.x, movement.y, 0f);
-        if (move.sqrMagnitude > 1f)     move.Normalize(); //evita movimento diagonal mais rápido que verticca/horizontal
+
+        if (move.sqrMagnitude > 1f)
+        {
+            move.Normalize(); //evita movimento diagonal mais rápido que verticca/horizontal
+        }
+
+        Vector3 finalMove = move * playerSpeed;
+
+        if(knockbackTimer>0f)
+        {
+            finalMove += knockbackVelocity;
+
+            knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, knockbackDecay * Time.deltaTime);
+
+            knockbackTimer -= Time.deltaTime;
+        }
+
         controller.Move(move * Time.deltaTime * playerSpeed);
 
 
@@ -178,7 +200,12 @@ public class TwinStickMovement : MonoBehaviour
         //isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        knockbackVelocity = new Vector3(direction.x, direction.y, 0f).normalized * force;
 
+        knockbackTimer = knockbackDuration;
+    }
 
 
 }
