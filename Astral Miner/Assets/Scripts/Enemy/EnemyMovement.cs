@@ -9,11 +9,14 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private PlayerAwarenesController _playerAwarenesController;
     private Vector2 _targetDirection;
+    private float _changeDirectionTimer;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerAwarenesController = GetComponent<PlayerAwarenesController>();
+
+        _targetDirection = Vector2.up;
 
     }
 
@@ -26,23 +29,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateTargetDirection()
     {
-        if(_playerAwarenesController.AwareOfPlayer)
-        {
-            _targetDirection = _playerAwarenesController.DirectionToPlayer;
-        }
-        else 
-        {
-            _targetDirection = Vector2.zero; 
-        }
+        HandleRandomDirectionChange();
+
+        HandlePlayerTargeting();
+
 
     }
 
     private void RotateToTarget()
     {
-        if (_targetDirection == Vector2.zero)
-        {
-            return;
-        }
 
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward,_targetDirection);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemyRotationSpeed * Time.fixedDeltaTime);
@@ -51,17 +46,34 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
+    private void HandleRandomDirectionChange()
+    {
+        _changeDirectionTimer -= Time.deltaTime;
+
+        if (_changeDirectionTimer <= 0)
+        {
+            float angleChange = Random.Range(-90f, 90f);
+            Quaternion rotation = Quaternion.AngleAxis(angleChange, transform.forward);
+            _targetDirection = rotation * _targetDirection;
+
+            _changeDirectionTimer = Random.Range(1f, 5f);
+
+        }
+    }
+
+    private void HandlePlayerTargeting()
+    {
+        if (_playerAwarenesController.AwareOfPlayer)
+        {
+            _targetDirection = _playerAwarenesController.DirectionToPlayer;
+        }
+    }
+
+
+
     private void SetVelocity()
     {
-        if (_targetDirection == Vector2.zero)
-        {
-            _rb.linearVelocity = Vector2.zero;
-        }
-        else
-        {
             _rb.linearVelocity = transform.up * enemySpeed;
-        }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -15,8 +15,7 @@ public class Knockback : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Vector2 direction =
-                ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
+            Vector2 direction = ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
 
             rb.linearVelocity = direction * knockbackForce;
         }
