@@ -63,4 +63,15 @@ public class EnemyMovement : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            Destroy(gameObject); //destroi o inimigo
+
+            //da dano ao jogador -- ou destroi o jogador
+
+        }
+    }
 }
