@@ -605,6 +605,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &697379042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697379044}
+  - component: {fileID: 697379043}
+  m_Layer: 0
+  m_Name: Asteroid Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &697379043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697379042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79df7b0120a891f46a72309985b65097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
+  minSpawnTime: 2
+  maxSpawnTime: 7
+  _maxObjects: 20
+--- !u!4 &697379044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697379042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.36119, y: 6.92035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814381881
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +698,7 @@ GameObject:
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -669,6 +717,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 3828956604228033971, guid: 5df39bb8cef7b1a47bd7cfa437ccfb0b, type: 3}
   minSpawnTime: 5
   maxSpawnTime: 10
+  _maxObjects: 10
 --- !u!4 &1353700807
 Transform:
   m_ObjectHideFlags: 0
@@ -697,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrbitMovement
   orbitCenter: {fileID: 814381882}
-  orbitRadius: 30
+  orbitRadius: 40
   orbitSpeed: 20
 --- !u!1 &1413504674
 GameObject:
@@ -936,3 +985,4 @@ SceneRoots:
   - {fileID: 6175813926821102123}
   - {fileID: 1353700807}
   - {fileID: 814381882}
+  - {fileID: 697379044}

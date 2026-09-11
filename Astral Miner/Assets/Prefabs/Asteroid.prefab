@@ -160,8 +160,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.01
-  m_LinearDamping: 1
+  m_Mass: 0.1
+  m_LinearDamping: 1.5
   m_AngularDamping: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -201,10 +201,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthController
   currentHealth: 10
-  maxHealth: 10
+  maxHealth: 3
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChange:
     m_PersistentCalls:
       m_Calls: []

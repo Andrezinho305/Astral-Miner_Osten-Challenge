@@ -13,7 +13,7 @@ public class Knockback : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Asteroid"))
         {
             Vector2 direction = ((Vector2)transform.position - (Vector2)collision.transform.position).normalized;
 

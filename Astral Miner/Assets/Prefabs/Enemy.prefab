@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthController
   currentHealth: 6
-  maxHealth: 6
+  maxHealth: 3
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
