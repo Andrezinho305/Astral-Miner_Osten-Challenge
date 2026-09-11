@@ -18,6 +18,8 @@ public class EnemyMovement : MonoBehaviour
 
         _targetDirection = Vector2.up;
 
+
+
     }
 
     void FixedUpdate()

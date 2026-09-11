@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7863304929980571200}
   - component: {fileID: 4853646031677091327}
   - component: {fileID: 289907595859470044}
+  - component: {fileID: 3393452332342200423}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -213,3 +214,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   damageDealt: 5
+--- !u!114 &3393452332342200423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828956604228033971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d81859a715d4784a807861fa02ab076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthController
+  currentHealth: 6
+  maxHealth: 6
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []

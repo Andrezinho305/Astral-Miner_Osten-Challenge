@@ -219,7 +219,7 @@ MonoBehaviour:
   shootOffset1: {fileID: 1080929704435022426}
   shootOffset2: {fileID: 4105634906173457212}
   bulletSpeed: 7
-  timeBetweenShots: 1.5
+  timeBetweenShots: 1
 --- !u!114 &4700043689165430026
 MonoBehaviour:
   m_ObjectHideFlags: 0

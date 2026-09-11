@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2573043121363842380}
   - component: {fileID: 9120844751981045523}
   - component: {fileID: 5522797799534164635}
+  - component: {fileID: 1538582161216492232}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Asteroid
@@ -187,3 +188,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Knockback
   knockbackForce: 8
+--- !u!114 &1538582161216492232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872080333679364999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d81859a715d4784a807861fa02ab076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthController
+  currentHealth: 10
+  maxHealth: 10
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
