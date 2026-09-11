@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] public int currentHealth;
-    [SerializeField] private int maxHealth;
+    public int currentHealth;
+    public int maxHealth;
 
     public int RemainingHealth
     {
@@ -18,6 +18,12 @@ public class HealthController : MonoBehaviour
 
     public UnityEvent OnDeath;
     public UnityEvent OnDamage;
+    public UnityEvent OnHealthChange;
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -26,6 +32,8 @@ public class HealthController : MonoBehaviour
         if (isInvincible) {return; }
 
         currentHealth -= damage;
+
+        OnHealthChange.Invoke();
 
         if (currentHealth < 0) { currentHealth = 0; }
 
@@ -39,9 +47,17 @@ public class HealthController : MonoBehaviour
 
         currentHealth += heal;
 
+        OnHealthChange.Invoke();
+
         if (currentHealth > maxHealth) { currentHealth = maxHealth; }
     }
 
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
 
+        OnHealthChange.Invoke();
+    }
 
 }

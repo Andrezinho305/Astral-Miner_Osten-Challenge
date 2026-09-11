@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999c96adf5ba0db49b9333da901d6fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damageDealt: 5
+  damageDealt: 1
 --- !u!114 &3393452332342200423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,5 +232,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
