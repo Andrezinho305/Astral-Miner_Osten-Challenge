@@ -5,7 +5,8 @@ public class PlayerShoot : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform shootOffset;
+    [SerializeField] private Transform shootOffset1;
+    [SerializeField] private Transform shootOffset2;
 
 
     [Header("Values")]
@@ -75,16 +76,24 @@ public class PlayerShoot : MonoBehaviour
 
     private void FireBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, shootOffset.position, transform.rotation);
+        GameObject bullet1 = Instantiate(bulletPrefab, shootOffset1.position, transform.rotation);
+        GameObject bullet2 = Instantiate(bulletPrefab, shootOffset2.position, transform.rotation);
 
-        if (!bullet.TryGetComponent(out Rigidbody2D rb))
+        if (!bullet1.TryGetComponent(out Rigidbody2D rb1))
         {
             Debug.LogError("O prefab da bala não possui Rigidbody2D.");
-            Destroy(bullet);
+            Destroy(bullet1);
+            return;
+        }
+        if (!bullet2.TryGetComponent(out Rigidbody2D rb2))
+        {
+            Debug.LogError("O prefab da bala não possui Rigidbody2D.");
+            Destroy(bullet2);
             return;
         }
 
-        rb.linearVelocity = bulletSpeed * transform.up;
+        rb1.linearVelocity = bulletSpeed * transform.up;
+        rb2.linearVelocity = bulletSpeed * transform.up;
 
         Debug.Log("Shoot");
     }

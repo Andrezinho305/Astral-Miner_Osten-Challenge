@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 9147156895348955690}
   - {fileID: 1080929704435022426}
+  - {fileID: 4105634906173457212}
   - {fileID: 3673053771629261327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,7 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
   bulletPrefab: {fileID: 4311083728086552389, guid: aa69297a83ea3eb468cc72062b7ea8d4, type: 3}
-  shootOffset: {fileID: 1080929704435022426}
+  shootOffset1: {fileID: 1080929704435022426}
+  shootOffset2: {fileID: 4105634906173457212}
   bulletSpeed: 7
   timeBetweenShots: 1.5
 --- !u!114 &4700043689165430026
@@ -1314,6 +1316,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5525422528595336006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4105634906173457212}
+  m_Layer: 0
+  m_Name: ShootPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4105634906173457212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525422528595336006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.973, y: 0.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2821168446012757844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6835775884459556721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1080929704435022426}
   m_Layer: 0
-  m_Name: ShootPoint
+  m_Name: ShootPoint1
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1372,7 @@ Transform:
   m_GameObject: {fileID: 6835775884459556721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 1.135, z: 0}
+  m_LocalPosition: {x: -0.973, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
