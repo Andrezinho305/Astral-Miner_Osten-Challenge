@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3635997110581601152}
   - component: {fileID: 8000448282486271593}
   - component: {fileID: 5726788621694928883}
+  - component: {fileID: 4700043689165430026}
+  - component: {fileID: 3986565820267673944}
+  - component: {fileID: 1901571739273190015}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -56,13 +59,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.15
-  m_Radius: 0.5
+  m_Height: 0.5
+  m_Radius: 0.48
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!114 &3635997110581601152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwinStickMovement
   playerSpeed: 6
+  knockbackDuration: 0.2
+  knockbackDecay: 8
   controllerDeadzone: 0.1
   gamepadRotateSmoothing: 1000
   isGamepad: 0
@@ -213,6 +218,87 @@ MonoBehaviour:
   shootOffset: {fileID: 1080929704435022426}
   bulletSpeed: 7
   timeBetweenShots: 1.5
+--- !u!114 &4700043689165430026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161370884191350238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d81859a715d4784a807861fa02ab076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthController
+  currentHealth: 100
+  maxHealth: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8000448282486271593}
+        m_TargetAssemblyTypeName: TwinStickMovement, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5726788621694928883}
+        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 161370884191350238}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3986565820267673944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161370884191350238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4faadabf5c51614f9f767fcfcd10d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Invincibility
+--- !u!114 &1901571739273190015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161370884191350238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2621d4214ea922b4e993b11ac3fa50a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamagedInvincibility
+  duration: 2
 --- !u!1 &194595088303532459
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,8 +365,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0018020272, y: -0.00432086}
-  m_Size: {x: 1.0083767, y: 2.157477}
+  m_Offset: {x: 0.0018020272, y: -0.037104726}
+  m_Size: {x: 1.0083767, y: 1.6941545}
   m_Direction: 0
 --- !u!1 &1207319226181486357
 GameObject:
