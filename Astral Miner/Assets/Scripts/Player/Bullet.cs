@@ -11,7 +11,12 @@ public class Bullet : MonoBehaviour
         {
             var healthController = collision.gameObject.GetComponent<HealthController>();
             healthController.TakeDamage(damageDealt); //da dano ao objeto -- ou destroi o jogador
-            if(healthController.currentHealth<=0 ) { Destroy(collision.gameObject); }
+
+
+            if (healthController.currentHealth<=0) 
+            {
+                Destroy(collision.gameObject); 
+            }
 
             Destroy(gameObject);
         }
@@ -20,7 +25,12 @@ public class Bullet : MonoBehaviour
         {
             var healthController = collision.gameObject.GetComponent<HealthController>();
             healthController.TakeDamage(damageDealt); //da dano ao objeto -- ou destroi o jogador
-            if (healthController.currentHealth <= 0) { Destroy(collision.gameObject); }
+
+
+            if (healthController.currentHealth <= 0) 
+            {
+                Destroy(collision.gameObject); 
+            }
 
             Destroy(gameObject);
         }
