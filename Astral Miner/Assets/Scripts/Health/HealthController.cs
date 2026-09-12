@@ -6,19 +6,13 @@ public class HealthController : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
-    public int RemainingHealth
-    {
-        get 
-        {
-            return currentHealth / maxHealth;
-        }
-    }
-
     public bool isInvincible { get; set; }
 
     public UnityEvent OnDeath;
     public UnityEvent OnDamage;
     public UnityEvent OnHealthChange;
+
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -34,11 +28,11 @@ public class HealthController : MonoBehaviour
         currentHealth -= damage;
 
         OnHealthChange.Invoke();
-
+        
         if (currentHealth < 0) { currentHealth = 0; }
 
         if (currentHealth == 0) { OnDeath.Invoke(); }
-        else {  OnDamage.Invoke(); }
+        else { OnDamage.Invoke(); }
     }
 
     public void AddHealth(int heal)

@@ -224,5 +224,16 @@ public class TwinStickMovement : MonoBehaviour
         knockbackTimer = knockbackDuration;
     }
 
+    public void HandleDeath()
+    {
+        PlayerRespawnManager respawnManager = FindFirstObjectByType<PlayerRespawnManager>();
+
+        if (respawnManager != null)
+        {
+            respawnManager.PlayerDied();
+        }
+
+        Destroy(gameObject);
+    }
 
 }

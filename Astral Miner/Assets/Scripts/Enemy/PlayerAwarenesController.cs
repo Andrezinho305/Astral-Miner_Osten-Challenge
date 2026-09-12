@@ -9,15 +9,38 @@ public class PlayerAwarenesController : MonoBehaviour
     [SerializeField] private float playerAwearenessDistance;
 
     private Transform _player;
+    private PlayerRespawnManager _respawnManager;
 
-    private void Awake()
+    private void Start()
     {
-        _player = FindFirstObjectByType<TwinStickMovement>().transform;
+        _respawnManager = FindFirstObjectByType<PlayerRespawnManager>();
+
+        if (_respawnManager != null)
+        {
+            _respawnManager.OnPlayerSpawned.AddListener(SetPlayer);
+        }
+
+        FindCurrentPlayer();
+    }
+
+    private void OnDestroy()
+    {
+        if (_respawnManager != null)
+        {
+            _respawnManager.OnPlayerSpawned.RemoveListener(SetPlayer);
+        }
     }
 
 
     void Update()
     {
+        if (_player == null)
+        {
+            AwareOfPlayer = false;
+            DirectionToPlayer = Vector2.zero;
+            return;
+        }
+
         Vector2 enemyToPlayerVector = _player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
@@ -28,6 +51,21 @@ public class PlayerAwarenesController : MonoBehaviour
         else
         {
             AwareOfPlayer = false;
+        }
+    }
+
+    private void SetPlayer(GameObject player)
+    {
+        _player = player.transform;
+    }
+
+    private void FindCurrentPlayer()
+    {
+        TwinStickMovement player = FindFirstObjectByType<TwinStickMovement>();
+
+        if (player != null)
+        {
+            _player = player.transform;
         }
     }
 }

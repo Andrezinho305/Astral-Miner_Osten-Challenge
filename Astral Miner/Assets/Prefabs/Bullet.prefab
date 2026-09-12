@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cea2c5a2853d6848a17ec299d44f2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  lifeTime: 3
+  lifeTime: 5
   damageDealt: 1
 --- !u!50 &2676357776678895385
 Rigidbody2D:

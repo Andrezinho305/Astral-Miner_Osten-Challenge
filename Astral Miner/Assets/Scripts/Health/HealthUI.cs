@@ -39,5 +39,22 @@ public class HealthUI : MonoBehaviour
             healthIcons.RemoveAt(lastIndex);
         }
     }
+
+    public void SetPlayer(GameObject player)
+    {
+        if (healthController != null)
+        {
+            healthController.OnHealthChange.RemoveListener(UpdateHealthUI);
+        }
+
+        healthController = player.GetComponent<HealthController>();
+
+        if (healthController != null)
+        {
+            healthController.OnHealthChange.AddListener(UpdateHealthUI);
+
+            UpdateHealthUI();
+        }
+    }
 }
 
