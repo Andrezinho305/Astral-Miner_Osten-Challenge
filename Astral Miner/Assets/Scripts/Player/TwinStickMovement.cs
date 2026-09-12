@@ -30,8 +30,10 @@ public class TwinStickMovement : MonoBehaviour
     //private Vector3 playerVelocity;
 
     private CharacterController controller;
-    private PlayerControls playerControls;
+    //private PlayerControls playerControls;
     private PlayerInput playerInput;
+    private InputAction movementAction;
+    private InputAction aimAction;
 
     private Camera mainCamera;
 
@@ -41,19 +43,29 @@ public class TwinStickMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
-        playerControls = new PlayerControls();
+        //playerControls = new PlayerControls();
+
+        movementAction = playerInput.actions["Movement"];
+        aimAction = playerInput.actions["Aim"];
+
 
         mainCamera = Camera.main;
     }
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        //playerControls.Enable();
+
+        playerInput.onControlsChanged += OnDeviceChange;
+
+        OnDeviceChange(playerInput);
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        //playerControls.Disable();
+
+        playerInput.onControlsChanged -= OnDeviceChange;
     }
 
 
@@ -69,8 +81,8 @@ public class TwinStickMovement : MonoBehaviour
 
     void HandleInput()
     {
-        movement = playerControls.Controls.Movement.ReadValue<Vector2>();
-        aim = playerControls.Controls.Aim.ReadValue<Vector2>();
+        movement = movementAction.ReadValue<Vector2>();
+        aim = aimAction.ReadValue<Vector2>();
 
     }
 
@@ -198,6 +210,11 @@ public class TwinStickMovement : MonoBehaviour
     {
         isGamepad = pi.currentControlScheme == "Gamepad";
         //isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+
+        isGamepad = pi.currentControlScheme == "Gamepad";
+
+        Debug.Log("Control Scheme: " + pi.currentControlScheme);
+        Debug.Log("É gamepad: " + isGamepad);
     }
 
     public void ApplyKnockback(Vector2 direction, float force)

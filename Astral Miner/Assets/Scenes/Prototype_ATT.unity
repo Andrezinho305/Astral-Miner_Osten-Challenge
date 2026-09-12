@@ -1131,6 +1131,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 535b347fc89de9b44b18af4a989e84e6, type: 3}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: 4c756336-66af-4433-addc-65f5c6e3c81b
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: b68fb978-bd05-445f-8fa6-0aba0fb537e6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: e74bd890-646f-4be0-a1a9-e2c41408e3f8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: 'Controls/Movement[/DualShock4GamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: 'Controls/Aim[/DualShock4GamepadHID/rightStick,/Mouse/position]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635997110581601152, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: 'Controls/Shoot[/Mouse/leftButton,/DualShock4GamepadHID/rightTrigger]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

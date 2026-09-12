@@ -219,8 +219,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4311083728086552389, guid: aa69297a83ea3eb468cc72062b7ea8d4, type: 3}
   shootOffset1: {fileID: 1080929704435022426}
   shootOffset2: {fileID: 4105634906173457212}
-  bulletSpeed: 7
-  timeBetweenShots: 1
+  bulletSpeed: 8
+  timeBetweenShots: 0.7
 --- !u!114 &4700043689165430026
 MonoBehaviour:
   m_ObjectHideFlags: 0
