@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 289907595859470044}
   - component: {fileID: 3393452332342200423}
   - component: {fileID: 1151028794388950397}
+  - component: {fileID: 2094651013626178900}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde5b8b748e852b4b9117c7c3e637c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  enemySpeed: 4
+  enemySpeed: 6
   enemyRotationSpeed: 150
 --- !u!114 &4853646031677091327
 MonoBehaviour:
@@ -244,6 +245,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2094651013626178900}
+        m_TargetAssemblyTypeName: EnemyCollectableDrop, Assembly-CSharp
+        m_MethodName: RandomlyDropCollectable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -263,3 +276,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyAllocator
   _onKillMoney: 5
+--- !u!114 &2094651013626178900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828956604228033971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2af07771032ad6448876e2a34a9ed2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollectableDrop
+  _chanceToDrop: 0.3
