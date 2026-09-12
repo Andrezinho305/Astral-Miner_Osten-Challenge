@@ -13,7 +13,11 @@ public class MoneyController : MonoBehaviour
         OnMoneyChange.Invoke();
     }
 
-
+    public void RemoveMoney()
+    {
+        money = money / 2;
+        OnMoneyChange.Invoke();
+    }
 
 
 

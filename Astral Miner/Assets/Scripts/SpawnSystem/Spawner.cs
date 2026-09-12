@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private float spawnRadius = 2f;
+
     [SerializeField]private GameObject objectPrefab;
 
     [SerializeField] private float minSpawnTime;
@@ -40,7 +42,10 @@ public class Spawner : MonoBehaviour
 
     private void SpawnObject()
     {
-        GameObject newObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);
+        Vector2 randomOffset = Random.insideUnitCircle * spawnRadius; //gera uma posição aleatória dentro de um raio
+        Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f); //define a nova spawn position dentro desse raio
+
+        GameObject newObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
 
         _spawnedObjects.Add(newObject);
     }
@@ -55,7 +60,10 @@ public class Spawner : MonoBehaviour
         _timeUntilSpawn = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+    }
 
 
 }

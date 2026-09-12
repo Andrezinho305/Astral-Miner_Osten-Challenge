@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79df7b0120a891f46a72309985b65097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 2
   maxSpawnTime: 7
@@ -715,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79df7b0120a891f46a72309985b65097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  spawnRadius: 3
   objectPrefab: {fileID: 3828956604228033971, guid: 5df39bb8cef7b1a47bd7cfa437ccfb0b, type: 3}
   minSpawnTime: 5
   maxSpawnTime: 10
@@ -1088,18 +1090,6 @@ PrefabInstance:
     - target: {fileID: 161370884191350238, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1913550632702465425, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
-      propertyPath: OnMoneyChange.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1913550632702465425, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
-      propertyPath: OnMoneyChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1913550632702465425, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
-      propertyPath: OnMoneyChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2821168446012757844, guid: d001eea66f3c55243bc7836df79d3e10, type: 3}
       propertyPath: m_LocalPosition.x
