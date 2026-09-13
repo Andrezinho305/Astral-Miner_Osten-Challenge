@@ -19,6 +19,14 @@ public class HealthController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void SetMaxHealth(int value)
+    {
+        maxHealth = value;
+        currentHealth = maxHealth;
+
+        OnHealthChange.Invoke();
+    }
+
     public void TakeDamage(int damage)
     {
         if (currentHealth == 0) { return; }

@@ -13,7 +13,20 @@ public class MoneyController : MonoBehaviour
         OnMoneyChange.Invoke();
     }
 
-    public void RemoveMoney()
+    public bool TrySpendMoney(int amount)
+    {
+        if (money < amount)
+        {
+            return false;
+        }
+
+        money -= amount;
+        OnMoneyChange.Invoke();
+
+        return true;
+    }
+
+    public void RemoveMoneyOnDeath()
     {
         money = money / 2;
         OnMoneyChange.Invoke();

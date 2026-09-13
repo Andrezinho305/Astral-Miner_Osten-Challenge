@@ -78,6 +78,10 @@ public class TwinStickMovement : MonoBehaviour
         HandleRotation();
     }
 
+    public void SetMovementSpeed(float speed)
+    {
+        playerSpeed = speed;
+    }
 
     void HandleInput()
     {

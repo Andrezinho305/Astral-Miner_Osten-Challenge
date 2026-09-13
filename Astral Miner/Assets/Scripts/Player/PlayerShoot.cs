@@ -12,6 +12,7 @@ public class PlayerShoot : MonoBehaviour
     [Header("Values")]
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float timeBetweenShots; //fire speed
+    [SerializeField] private int bulletDamage = 1;
 
     private PlayerControls _controls;
 
@@ -79,6 +80,12 @@ public class PlayerShoot : MonoBehaviour
         GameObject bullet1 = Instantiate(bulletPrefab, shootOffset1.position, transform.rotation);
         GameObject bullet2 = Instantiate(bulletPrefab, shootOffset2.position, transform.rotation);
 
+        Bullet bulletComponent1 = bullet1.GetComponent<Bullet>();
+        Bullet bulletComponent2 = bullet2.GetComponent<Bullet>();
+
+        bulletComponent1.SetDamage(bulletDamage);
+        bulletComponent2.SetDamage(bulletDamage);
+
         if (!bullet1.TryGetComponent(out Rigidbody2D rb1))
         {
             Debug.LogError("O prefab da bala não possui Rigidbody2D.");
@@ -95,6 +102,20 @@ public class PlayerShoot : MonoBehaviour
         rb1.linearVelocity = bulletSpeed * transform.up;
         rb2.linearVelocity = bulletSpeed * transform.up;
 
-        Debug.Log("Shoot");
+    }
+
+    public void SetBulletDamage(int damage)
+    {
+        bulletDamage = damage;
+    }
+
+    public void SetBulletSpeed(float speed)
+    {
+        bulletSpeed = speed;
+    }
+
+    public void SetTimeBetweenShots(float time)
+    {
+        timeBetweenShots = time;
     }
 }
