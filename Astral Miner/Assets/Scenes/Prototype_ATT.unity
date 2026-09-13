@@ -274,9 +274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
-  minSpawnTime: 2
+  minSpawnTime: 1
   maxSpawnTime: 7
-  _maxObjects: 20
+  _maxObjects: 10
 --- !u!1 &172471841
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +406,7 @@ Transform:
   - {fileID: 674298294}
   - {fileID: 2130881792}
   - {fileID: 750404384}
+  - {fileID: 1916555329}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434701199
@@ -983,9 +984,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
-  minSpawnTime: 2
+  minSpawnTime: 1
   maxSpawnTime: 7
-  _maxObjects: 20
+  _maxObjects: 10
 --- !u!1 &558673907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,9 +1170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
-  minSpawnTime: 2
+  minSpawnTime: 1
   maxSpawnTime: 7
-  _maxObjects: 20
+  _maxObjects: 10
 --- !u!1 &583989411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1436,7 @@ Transform:
   m_GameObject: {fileID: 696886052}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 13.73, z: 0}
+  m_LocalPosition: {x: 22, y: 16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1553,7 +1554,7 @@ Transform:
   m_GameObject: {fileID: 701164151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0.21, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1683,10 +1684,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldDificultyManager
   worldLevel: 0
-  enemyHealthMultiplier: 2
-  enemyMoneyMultiplier: 1.5
-  asteroidHealthMultiplier: 3
-  asteroidMoneyMultiplier: 1.5
+  enemyHealthMultiplier: 4
+  enemyMoneyMultiplier: 2
+  asteroidHealthMultiplier: 5
+  asteroidMoneyMultiplier: 2
 --- !u!1 &806546243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,9 +1873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
-  minSpawnTime: 2
+  minSpawnTime: 1
   maxSpawnTime: 7
-  _maxObjects: 20
+  _maxObjects: 10
 --- !u!1 &840411834
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,7 +3368,7 @@ Transform:
   m_GameObject: {fileID: 1104815176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 0.21, z: 0}
+  m_LocalPosition: {x: 22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3679,9 +3680,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
-  minSpawnTime: 2
+  minSpawnTime: 1
   maxSpawnTime: 7
-  _maxObjects: 20
+  _maxObjects: 10
 --- !u!1 &1353700805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,7 +3716,7 @@ MonoBehaviour:
   spawnRadius: 3
   objectPrefab: {fileID: 3828956604228033971, guid: 5df39bb8cef7b1a47bd7cfa437ccfb0b, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 3
+  maxSpawnTime: 5
   _maxObjects: 10
 --- !u!4 &1353700807
 Transform:
@@ -3745,7 +3746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrbitMovement
   orbitCenter: {fileID: 1916555329}
-  orbitRadius: 60
+  orbitRadius: 61.6
   orbitSpeed: 25
 --- !u!1 &1372167384
 GameObject:
@@ -4556,7 +4557,7 @@ Transform:
   m_GameObject: {fileID: 1524003613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 7, z: 0}
+  m_LocalPosition: {x: 2, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4678,7 +4679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 13.73}
+  m_AnchoredPosition: {x: 2, y: 16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532972140
@@ -5119,7 +5120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1565948782}
   m_Layer: 0
-  m_Name: ==UPGRADE ZONES==
+  m_Name: ===UPGRADE ZONES===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5139,10 +5140,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1532972139}
-  - {fileID: 696886053}
-  - {fileID: 1721873105}
   - {fileID: 1524003614}
   - {fileID: 701164152}
+  - {fileID: 696886053}
+  - {fileID: 1721873105}
   - {fileID: 1104815177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5313,7 +5314,7 @@ Transform:
   m_GameObject: {fileID: 1721873104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 7, z: 0}
+  m_LocalPosition: {x: 22, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6172,12 +6173,12 @@ Transform:
   m_GameObject: {fileID: 1916555328}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -1.8, z: 0}
+  m_LocalPosition: {x: 2.6506796, y: 6.46049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 485566485}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 334169880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1916555330
 MonoBehaviour:
@@ -6661,8 +6662,8 @@ MonoBehaviour:
   costMultiplier: 2
   baseBulletDamage: 1
   baseHealth: 3
-  baseMovementSpeed: 6.1
-  baseBulletSpeed: 8
+  baseMovementSpeed: 7
+  baseBulletSpeed: 7
   baseTimeBetweenShots: 0.7
   damageIncrease: 1
   healthIncrease: 1
@@ -6739,7 +6740,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 583989415}
   - {fileID: 1413504677}
-  - {fileID: 1916555329}
   - {fileID: 172471842}
   - {fileID: 1565948782}
   - {fileID: 334169880}
