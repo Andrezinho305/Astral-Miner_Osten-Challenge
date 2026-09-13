@@ -57,4 +57,15 @@ public class WorldDificultyManager : MonoBehaviour
 
         return Mathf.RoundToInt(finalMoney);
     }
+
+    public void SetWorldLevel(int level)
+    {
+        worldLevel =
+            Mathf.Max(0, level);
+
+        Debug.Log(
+            "World Level: " +
+            worldLevel
+        );
+    }
 }

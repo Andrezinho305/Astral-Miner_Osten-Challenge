@@ -32,6 +32,11 @@ public class MoneyController : MonoBehaviour
         OnMoneyChange.Invoke();
     }
 
+    public void SetMoney(int amount)
+    {
+        money = Mathf.Max(0, amount);
 
+        OnMoneyChange.Invoke();
+    }
 
 }

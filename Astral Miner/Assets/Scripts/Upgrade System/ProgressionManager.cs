@@ -119,6 +119,8 @@ public class ProgressionManager : MonoBehaviour
 
         ApplyAllPlayerUpgrades();
 
+        SaveProgress();
+
         OnProgressionChanged.Invoke();
 
         Debug.Log(
@@ -300,6 +302,8 @@ public class ProgressionManager : MonoBehaviour
 
         AdvanceWorld();
 
+        SaveProgress();
+
         return true;
     }
 
@@ -438,4 +442,163 @@ public class ProgressionManager : MonoBehaviour
 
         return totalCost;
     }
+
+    public void WriteSaveData(SaveData data)
+    {
+        data.currentCycle =
+            CurrentCycle;
+
+        // Ciclo atual
+        data.cycleDamageUpgrades =
+            cycleDamageUpgrades;
+
+        data.cycleHealthUpgrades =
+            cycleHealthUpgrades;
+
+        data.cycleMovementUpgrades =
+            cycleMovementUpgrades;
+
+        data.cycleBulletSpeedUpgrades =
+            cycleBulletSpeedUpgrades;
+
+        data.cycleFireRateUpgrades =
+            cycleFireRateUpgrades;
+
+
+        // Totais
+        data.totalDamageUpgrades =
+            totalDamageUpgrades;
+
+        data.totalHealthUpgrades =
+            totalHealthUpgrades;
+
+        data.totalMovementUpgrades =
+            totalMovementUpgrades;
+
+        data.totalBulletSpeedUpgrades =
+            totalBulletSpeedUpgrades;
+
+        data.totalFireRateUpgrades =
+            totalFireRateUpgrades;
+    }
+
+    public void LoadSaveData(SaveData data)
+    {
+        CurrentCycle =
+            data.currentCycle;
+
+        // Ciclo atual
+        cycleDamageUpgrades =
+            data.cycleDamageUpgrades;
+
+        cycleHealthUpgrades =
+            data.cycleHealthUpgrades;
+
+        cycleMovementUpgrades =
+            data.cycleMovementUpgrades;
+
+        cycleBulletSpeedUpgrades =
+            data.cycleBulletSpeedUpgrades;
+
+        cycleFireRateUpgrades =
+            data.cycleFireRateUpgrades;
+
+
+        // Totais
+        totalDamageUpgrades =
+            data.totalDamageUpgrades;
+
+        totalHealthUpgrades =
+            data.totalHealthUpgrades;
+
+        totalMovementUpgrades =
+            data.totalMovementUpgrades;
+
+        totalBulletSpeedUpgrades =
+            data.totalBulletSpeedUpgrades;
+
+        totalFireRateUpgrades =
+            data.totalFireRateUpgrades;
+
+
+        ApplyAllPlayerUpgrades();
+
+        OnProgressionChanged.Invoke();
+
+        Debug.Log(
+            "Progressão carregada. Ciclo: " +
+            CurrentCycle
+        );
+    }
+
+    private void SaveProgress()
+    {
+        if (SaveManager.Instance == null)
+        {
+            Debug.LogWarning("SaveManager não encontrado.");
+            return;
+        }
+
+        SaveData data = SaveManager.Instance.Data;
+
+        if (data == null)
+        {
+            Debug.LogWarning("SaveData não encontrado.");
+            return;
+        }
+
+        // Marca que já existe uma partida salva
+        data.hasSave = true;
+
+        // =========================
+        // PROGRESSÃO
+        // =========================
+
+        WriteSaveData(data);
+
+
+        // =========================
+        // DINHEIRO
+        // =========================
+
+        if (moneyController != null)
+        {
+            data.money = moneyController.money;
+        }
+
+
+        // =========================
+        // WORLD LEVEL
+        // =========================
+
+        if (worldDifficultyManager != null)
+        {
+            data.worldLevel =
+                worldDifficultyManager.WorldLevel;
+        }
+
+
+        // =========================
+        // POSIÇÃO DO PLAYER
+        // =========================
+
+        if (currentPlayer != null)
+        {
+            data.playerPositionX =
+                currentPlayer.transform.position.x;
+
+            data.playerPositionY =
+                currentPlayer.transform.position.y;
+        }
+
+
+        // =========================
+        // GRAVA O ARQUIVO
+        // =========================
+
+        SaveManager.Instance.WriteSaveFile();
+
+        Debug.Log("Progresso salvo.");
+    }
+
 }
