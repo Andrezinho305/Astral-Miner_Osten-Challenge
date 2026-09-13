@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ProgressionManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class ProgressionManager : MonoBehaviour
 
     [SerializeField] private WorldDificultyManager worldDifficultyManager;
 
+    public UnityEvent OnProgressionChanged;
+
     // Ciclo atual
     public int CurrentCycle { get; private set; } = 1;
 
@@ -61,7 +64,7 @@ public class ProgressionManager : MonoBehaviour
 
     public bool WorldUpgradeAvailable => UpgradesPurchasedThisCycle >= 7;
 
-    public int WorldUpgradeCost => currentCycleUpgradeValue;
+    public int WorldUpgradeCost => CalculateWorldUpgradeCost();
 
     private GameObject currentPlayer;
 
@@ -115,6 +118,8 @@ public class ProgressionManager : MonoBehaviour
         RegisterUpgrade(upgradeType);
 
         ApplyAllPlayerUpgrades();
+
+        OnProgressionChanged.Invoke();
 
         Debug.Log(
             $"Upgrade comprado: {upgradeType} | " + $"Custo: {cost} | " + $"Progresso: {UpgradesPurchasedThisCycle}/9");
@@ -283,7 +288,7 @@ public class ProgressionManager : MonoBehaviour
     {
         if (!WorldUpgradeAvailable)
         {
-            Debug.Log("Os 9 upgrades do ciclo ainda não foram comprados.");
+            Debug.Log("Os 7 upgrades do ciclo ainda não foram comprados.");
             return false;
         }
 
@@ -312,6 +317,125 @@ public class ProgressionManager : MonoBehaviour
 
         worldDifficultyManager.IncreaseWorldLevel();
 
+        OnProgressionChanged.Invoke();
+
         Debug.Log($"Novo ciclo iniciado: {CurrentCycle}");
+    }
+
+    public int GetUpgradeCurrentLevel(PlayerUpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case PlayerUpgradeType.BulletDamage:
+                return cycleDamageUpgrades;
+
+            case PlayerUpgradeType.MaxHealth:
+                return cycleHealthUpgrades;
+
+            case PlayerUpgradeType.MovementSpeed:
+                return cycleMovementUpgrades;
+
+            case PlayerUpgradeType.BulletSpeed:
+                return cycleBulletSpeedUpgrades;
+
+            case PlayerUpgradeType.FireRate:
+                return cycleFireRateUpgrades;
+        }
+
+        return 0;
+    }
+
+    public int GetUpgradeMaxLevel(PlayerUpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case PlayerUpgradeType.BulletDamage:
+                return 3;
+
+            case PlayerUpgradeType.MaxHealth:
+                return 1;
+
+            case PlayerUpgradeType.MovementSpeed:
+                return 1;
+
+            case PlayerUpgradeType.BulletSpeed:
+                return 1;
+
+            case PlayerUpgradeType.FireRate:
+                return 1;
+        }
+
+        return 0;
+    }
+
+    private int CalculateWorldUpgradeCost()
+    {
+        int totalCost = 0;
+
+        // 3 upgrades de dano
+        for (int i = 0; i < 3; i++)
+        {
+            int level = totalDamageUpgrades - cycleDamageUpgrades + i;
+
+            totalCost += Mathf.RoundToInt(
+                damageBaseCost *
+                Mathf.Pow(costMultiplier, level)
+            );
+        }
+
+
+        // 1 upgrade de vida
+        {
+            int level =
+                totalHealthUpgrades -
+                cycleHealthUpgrades;
+
+            totalCost += Mathf.RoundToInt(
+                healthBaseCost *
+                Mathf.Pow(costMultiplier, level)
+            );
+        }
+
+
+        // 1 upgrade de movimento
+        {
+            int level =
+                totalMovementUpgrades -
+                cycleMovementUpgrades;
+
+            totalCost += Mathf.RoundToInt(
+                movementSpeedBaseCost *
+                Mathf.Pow(costMultiplier, level)
+            );
+        }
+
+
+        // 1 upgrade de velocidade da bala
+        {
+            int level =
+                totalBulletSpeedUpgrades -
+                cycleBulletSpeedUpgrades;
+
+            totalCost += Mathf.RoundToInt(
+                bulletSpeedBaseCost *
+                Mathf.Pow(costMultiplier, level)
+            );
+        }
+
+
+        // 1 upgrade de fire rate
+        {
+            int level =
+                totalFireRateUpgrades -
+                cycleFireRateUpgrades;
+
+            totalCost += Mathf.RoundToInt(
+                fireRateBaseCost *
+                Mathf.Pow(costMultiplier, level)
+            );
+        }
+
+
+        return totalCost;
     }
 }
