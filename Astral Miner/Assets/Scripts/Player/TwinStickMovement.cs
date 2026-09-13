@@ -37,19 +37,28 @@ public class TwinStickMovement : MonoBehaviour
 
     private Camera mainCamera;
 
+    private Animator animator;
+
+    private ArenaBoundary arenaBoundary;
+
 
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         //playerControls = new PlayerControls();
+
 
         movementAction = playerInput.actions["Movement"];
         aimAction = playerInput.actions["Aim"];
 
 
         mainCamera = Camera.main;
+
+        arenaBoundary = FindFirstObjectByType<ArenaBoundary>();
     }
 
     private void OnEnable()
@@ -94,6 +103,7 @@ public class TwinStickMovement : MonoBehaviour
     {
         //GPT - TENTATIVA DE TRANSFORMAÇÃO PARA 2D
         Vector3 move = new Vector3(movement.x, movement.y, 0f);
+            animator.SetBool("IsMoving", move.sqrMagnitude > 0.01f);
 
         if (move.sqrMagnitude > 1f)
         {
@@ -111,13 +121,52 @@ public class TwinStickMovement : MonoBehaviour
             knockbackTimer -= Time.deltaTime;
         }
 
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        Vector3 displacement = finalMove * Time.deltaTime;
 
+        displacement = ClampMovementToArena(displacement);
+
+        controller.Move(displacement);
 
         /* OLD - VIDEO 3D
         Vector3 move = new Vector3(movement.x, 0, movement.y);
         controller.Move(move * Time.deltaTime * playerSpeed);
         */
+    }
+
+    private Vector3 ClampMovementToArena(Vector3 displacement)
+    {
+        if (arenaBoundary == null)
+            return displacement;
+
+        Vector3 currentPosition = transform.position;
+
+        Vector3 targetPosition =
+            currentPosition + displacement;
+
+        Vector3 center =
+            arenaBoundary.Center;
+
+        // Estamos trabalhando em XY
+        Vector2 offset = new Vector2(
+            targetPosition.x - center.x,
+            targetPosition.y - center.y
+        );
+
+        float radius = arenaBoundary.Radius;
+
+        if (offset.magnitude <= radius)
+            return displacement;
+
+        Vector2 limitedOffset =
+            offset.normalized * radius;
+
+        Vector3 limitedPosition = new Vector3(
+            center.x + limitedOffset.x,
+            center.y + limitedOffset.y,
+            targetPosition.z
+        );
+
+        return limitedPosition - currentPosition;
     }
 
     void HandleRotation()
