@@ -452,6 +452,7 @@ Transform:
   - {fileID: 750404384}
   - {fileID: 1916555329}
   - {fileID: 325768631}
+  - {fileID: 641001188}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434701199
@@ -944,7 +945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1405,6 +1406,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &641001187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641001188}
+  - component: {fileID: 641001189}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &641001188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641001187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 334169880}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &641001189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641001187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce2c8d695dd1ef408e99e5e79c449a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  ambience: {fileID: 8300000, guid: 23837d1f64344c545ae552610c694730, type: 3}
+  asteroidexplosion: {fileID: 8300000, guid: 7daf770ca28971e4a8c96f0db17aa440, type: 3}
+  engine: {fileID: 8300000, guid: 355a8cf893b4da74ab96f441711cfab9, type: 3}
+  impact: {fileID: 8300000, guid: 44cde41128d924d4ba96a047b72cf6fe, type: 3}
+  spaceshipexplosion: {fileID: 8300000, guid: 793f93ee5b0b0704eb8c9b472664119e, type: 3}
+  tirolaser: {fileID: 8300000, guid: bf7917670cec60a4f97691ece6e7474e, type: 3}
+  upgrade: {fileID: 8300000, guid: e77ec4c3ae2917545996d1356e4a8d15, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &674298292
 GameObject:
   m_ObjectHideFlags: 0

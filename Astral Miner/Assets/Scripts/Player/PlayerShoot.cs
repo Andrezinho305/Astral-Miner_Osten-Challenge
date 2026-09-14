@@ -77,6 +77,8 @@ public class PlayerShoot : MonoBehaviour
 
     private void FireBullet()
     {
+        SoundManager.Instance.PlayTirolaser();
+        
         GameObject bullet1 = Instantiate(bulletPrefab, shootOffset1.position, transform.rotation);
         GameObject bullet2 = Instantiate(bulletPrefab, shootOffset2.position, transform.rotation);
 

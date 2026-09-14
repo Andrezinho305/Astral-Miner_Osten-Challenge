@@ -45,6 +45,11 @@ public class PlayerUpgradeZone : MonoBehaviour
             success
         );
 
+        if (success)
+        {
+            SoundManager.Instance.PlayUpgrade();
+        }
+
         upgradeZoneUI.UpdateUI(
             upgradeType,
             progressionManager

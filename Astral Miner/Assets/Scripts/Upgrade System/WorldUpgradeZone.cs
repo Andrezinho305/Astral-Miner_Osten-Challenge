@@ -38,6 +38,11 @@ public class WorldUpgradeZone : MonoBehaviour
 
         worldUpgradeUI.ShowPurchaseFeedback(success);
 
+        if (success)
+        {
+            SoundManager.Instance.PlayUpgrade();
+        }
+
         worldUpgradeUI.UpdateUI(progressionManager);
     }
 

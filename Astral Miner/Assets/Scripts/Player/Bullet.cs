@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
+            SoundManager.Instance.PlayImpact();
             var healthController = collision.gameObject.GetComponent<HealthController>();
             healthController.TakeDamage(damageDealt); //da dano ao objeto -- ou destroi o jogador
 
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour
 
         if(collision.CompareTag("Asteroid"))
         {
+            SoundManager.Instance.PlayImpact();
             var healthController = collision.gameObject.GetComponent<HealthController>();
             healthController.TakeDamage(damageDealt); //da dano ao objeto -- ou destroi o jogador
 
