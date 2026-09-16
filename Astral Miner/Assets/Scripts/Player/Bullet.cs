@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
             if (healthController.currentHealth<=0) 
             {
                 Destroy(collision.gameObject); 
+                SoundManager.Instance.PlaySpaceshipExplosion();
             }
 
             Destroy(gameObject);
@@ -43,7 +44,8 @@ public class Bullet : MonoBehaviour
 
             if (healthController.currentHealth <= 0) 
             {
-                Destroy(collision.gameObject); 
+                Destroy(collision.gameObject);
+                SoundManager.Instance.PlayAsteroidExplosion(); 
             }
 
             Destroy(gameObject);
