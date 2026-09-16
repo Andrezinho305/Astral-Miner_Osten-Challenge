@@ -68,8 +68,9 @@ public class ProgressionManager : MonoBehaviour
 
     private GameObject currentPlayer;
 
-    private void Start()
+    private void Awake()
     {
+        // Escuta o spawn antes do PlayerRespawnManager criar a primeira nave.
         if (respawnManager != null)
         {
             respawnManager.OnPlayerSpawned.AddListener(SetPlayer);
@@ -529,6 +530,12 @@ public class ProgressionManager : MonoBehaviour
             "Progressão carregada. Ciclo: " +
             CurrentCycle
         );
+    }
+
+    // Permite que outros sistemas, como o menu de pausa, salvem o estado atual.
+    public void SaveCurrentProgress()
+    {
+        SaveProgress();
     }
 
     private void SaveProgress()
