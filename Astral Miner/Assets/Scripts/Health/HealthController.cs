@@ -36,7 +36,9 @@ public class HealthController : MonoBehaviour
         currentHealth -= damage;
 
         OnHealthChange.Invoke();
-        
+
+        SoundManager.Instance.PlayImpact();
+
         if (currentHealth < 0) { currentHealth = 0; }
 
         if (currentHealth == 0) { OnDeath.Invoke(); }
