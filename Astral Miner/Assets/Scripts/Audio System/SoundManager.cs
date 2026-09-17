@@ -9,7 +9,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip spaceshipexplosion;
     [SerializeField] private AudioClip tirolaser;
     [SerializeField] private AudioClip upgrade;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource ambienceSource;
+    [SerializeField] private AudioSource sfxSource;
 
     public static SoundManager Instance;
 
@@ -27,40 +28,40 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayAmbience()
     {
-        audioSource.clip = ambience;
-        audioSource.loop = true;
-        audioSource.Play();
+        ambienceSource.clip = ambience;
+        ambienceSource.loop = true;
+        ambienceSource.Play();
     }
 
     public void PlayAsteroidExplosion()
     {
-       audioSource.PlayOneShot(asteroidexplosion);
+       sfxSource.PlayOneShot(asteroidexplosion);
     }
 
     public void PlayEngine()
     {
-        audioSource.clip = engine;
-        audioSource.loop = true;
-        audioSource.Play();
+        sfxSource.clip = engine;
+        sfxSource.loop = true;
+        sfxSource.Play();
     }
 
     public void PlayImpact()
     {
-        audioSource.PlayOneShot(impact);
+        sfxSource.PlayOneShot(impact);
     }
 
     public void PlaySpaceshipExplosion()
     {
-        audioSource.PlayOneShot(spaceshipexplosion);
+        sfxSource.PlayOneShot(spaceshipexplosion);
     }
 
     public void PlayTirolaser()
     {
-        audioSource.PlayOneShot(tirolaser);
+        sfxSource.PlayOneShot(tirolaser);
     }
 
     public void PlayUpgrade()
     {
-        audioSource.PlayOneShot(upgrade);
+        sfxSource.PlayOneShot(upgrade);
     }
 }
