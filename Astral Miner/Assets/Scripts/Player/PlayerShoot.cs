@@ -16,6 +16,9 @@ public class PlayerShoot : MonoBehaviour
 
     private PlayerControls _controls;
 
+    // Bloqueia o tiro atÃ© a entrada usada para fechar o menu ser solta.
+    private bool _waitingForShootRelease;
+
     private float _lastFireTime;
     private bool _isShooting;
     private float _nextFireTime;
@@ -44,6 +47,16 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(_waitingForShootRelease)
+        {
+            if (!_controls.Controls.Shoot.IsPressed())
+            {
+                _waitingForShootRelease = false;
+            }
+                return;
+            
+        }
         if (_isShooting)
         {
             TryFire();                
@@ -53,7 +66,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void TryFire()
     {
-        // Ainda está no cooldown
+        // Ainda estï¿½ no cooldown
         if (Time.time < _nextFireTime)
             return;
 
@@ -64,6 +77,11 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnShootPerformed(InputAction.CallbackContext context)
     {
+        if(_waitingForShootRelease)
+        {
+            return;
+        }
+           
         _isShooting = true;
 
         TryFire();
@@ -90,13 +108,13 @@ public class PlayerShoot : MonoBehaviour
 
         if (!bullet1.TryGetComponent(out Rigidbody2D rb1))
         {
-            Debug.LogError("O prefab da bala não possui Rigidbody2D.");
+            Debug.LogError("O prefab da bala nï¿½o possui Rigidbody2D.");
             Destroy(bullet1);
             return;
         }
         if (!bullet2.TryGetComponent(out Rigidbody2D rb2))
         {
-            Debug.LogError("O prefab da bala não possui Rigidbody2D.");
+            Debug.LogError("O prefab da bala nï¿½o possui Rigidbody2D.");
             Destroy(bullet2);
             return;
         }
@@ -119,5 +137,11 @@ public class PlayerShoot : MonoBehaviour
     public void SetTimeBetweenShots(float time)
     {
         timeBetweenShots = time;
+    }
+
+    public void BlockShootingUntilRelease()
+    {
+        _isShooting = false; // Garante que o tiro nÃ£o continue enquanto bloqueado
+        _waitingForShootRelease = true;
     }
 }

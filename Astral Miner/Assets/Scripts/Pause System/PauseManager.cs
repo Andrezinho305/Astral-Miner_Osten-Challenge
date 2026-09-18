@@ -59,6 +59,11 @@ public class PauseManager : MonoBehaviour
         // Com 0, movimento, física e spawners param.
         Time.timeScale = isPaused ? 0f : 1f;
 
+        if(!isPaused)
+        {
+            BlockGameplayShootingUntilRelease();
+        }
+
         // Pausa ou retoma todos os áudios do jogo.
         AudioListener.pause = isPaused;
 
@@ -139,6 +144,18 @@ public class PauseManager : MonoBehaviour
         // Carrega a cena de menu configurada no Inspector.
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
+    private void BlockGameplayShootingUntilRelease()
+    {
+        // Procura o script PlayerShoot no jogador ativo na cena.
+        PlayerShoot playerShoot = FindObjectOfType<PlayerShoot>();
+
+        if (playerShoot != null)
+        {
+            // Bloqueia o tiro até que o jogador solte a tecla de disparo.
+            playerShoot.BlockShootingUntilRelease();
+        }
+    }   
 
     private void OnDestroy()
     {

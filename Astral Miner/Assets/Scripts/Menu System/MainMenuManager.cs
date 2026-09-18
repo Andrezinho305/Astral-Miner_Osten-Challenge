@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 // Controla os botões e painéis exibidos na cena de menu principal.
 public class MainMenuManager : MonoBehaviour
@@ -19,6 +20,9 @@ public class MainMenuManager : MonoBehaviour
     [Header("Buttons")]
     // Botão Continuar, desativado quando não existe uma partida salva.
     [SerializeField] private Button continueButton;
+
+    // Impede vários cliques de iniciar mais de um carregamento de cena.
+    private bool isLoadingGameplayScene;
 
     private void Start()
     {
@@ -45,8 +49,8 @@ public class MainMenuManager : MonoBehaviour
         // Registra que a próxima cena deve iniciar do zero.
         GameSessionManager.SetStartMode(GameStartMode.NewGame);
 
-        // Carrega a cena jogável configurada no Inspector.
-        SceneManager.LoadScene(gameplaySceneName);
+        // Aguarda brevemente para que o som do botão comece antes de trocar de cena.
+        StartCoroutine(LoadGameplayScene());
     }
 
     // Carrega a partida salva, caso ela exista.
@@ -62,8 +66,8 @@ public class MainMenuManager : MonoBehaviour
         // Registra que a próxima cena deve restaurar o save atual.
         GameSessionManager.SetStartMode(GameStartMode.ContinueGame);
 
-        // Carrega a mesma cena jogável usada por uma nova partida.
-        SceneManager.LoadScene(gameplaySceneName);
+        // Aguarda brevemente para que o som do botão comece antes de trocar de cena.
+        StartCoroutine(LoadGameplayScene());
     }
 
     // Abre o painel de configurações e esconde os botões principais.
@@ -109,5 +113,24 @@ public class MainMenuManager : MonoBehaviour
             continueButton.interactable =
                 SaveManager.Instance != null && SaveManager.Instance.HasSave();
         }
+    }
+
+    // Carrega o gameplay depois de uma pausa curta, independente do Time.timeScale.
+    private IEnumerator LoadGameplayScene()
+    {
+        // Ignora cliques adicionais enquanto a transição já está em andamento.
+        if (isLoadingGameplayScene)
+        {
+            yield break;
+        }
+
+        // Bloqueia novos carregamentos e evita vários cliques no mesmo botão.
+        isLoadingGameplayScene = true;
+
+        // Usa tempo real para o atraso funcionar mesmo se o jogo estiver pausado.
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        // Carrega a cena jogável configurada no Inspector.
+        SceneManager.LoadScene(gameplaySceneName);
     }
 }
