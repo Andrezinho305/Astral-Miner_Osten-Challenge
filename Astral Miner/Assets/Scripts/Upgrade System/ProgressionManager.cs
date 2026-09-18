@@ -441,7 +441,7 @@ public class ProgressionManager : MonoBehaviour
         }
 
 
-        return totalCost;
+        return totalCost/2;
     }
 
     public void WriteSaveData(SaveData data)
