@@ -275,8 +275,8 @@ MonoBehaviour:
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 7
-  _maxObjects: 10
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &119508719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1365,7 @@ Transform:
   - {fileID: 538091777}
   - {fileID: 1351897808}
   - {fileID: 116684213}
+  - {fileID: 2130745316}
   m_Father: {fileID: 172471842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467252623
@@ -1803,8 +1804,8 @@ MonoBehaviour:
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 7
-  _maxObjects: 10
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &544434617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,8 +2065,8 @@ MonoBehaviour:
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 7
-  _maxObjects: 10
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &563919186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2466,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3016,9 +3017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldDificultyManager
   worldLevel: 0
-  enemyHealthMultiplier: 5
+  enemyHealthMultiplier: 6
   enemyMoneyMultiplier: 2
-  asteroidHealthMultiplier: 6
+  asteroidHealthMultiplier: 7
   asteroidMoneyMultiplier: 2
 --- !u!1 &772469318
 GameObject:
@@ -3391,8 +3392,8 @@ MonoBehaviour:
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 7
-  _maxObjects: 10
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &840411834
 GameObject:
   m_ObjectHideFlags: 0
@@ -6130,8 +6131,8 @@ MonoBehaviour:
   spawnRadius: 10
   objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 7
-  _maxObjects: 10
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &1353700805
 GameObject:
   m_ObjectHideFlags: 0
@@ -10292,6 +10293,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectableSpawner
   _collectablePrefabs:
   - {fileID: 6180027914872540372, guid: 00265ed7bce6871489ae675ec38ad164, type: 3}
+--- !u!1 &2130745315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130745316}
+  - component: {fileID: 2130745317}
+  m_Layer: 0
+  m_Name: Asteroid Spawner 7
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2130745316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130745315}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9, y: -56.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448951754}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130745317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130745315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79df7b0120a891f46a72309985b65097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  spawnRadius: 10
+  objectPrefab: {fileID: 8872080333679364999, guid: 1feb59fd50e45a448b657bb9cdad059e, type: 3}
+  minSpawnTime: 1
+  maxSpawnTime: 5
+  _maxObjects: 12
 --- !u!1 &2130881791
 GameObject:
   m_ObjectHideFlags: 0
@@ -10338,15 +10388,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProgressionManager
   moneyController: {fileID: 674298293}
   respawnManager: {fileID: 1916555330}
-  damageBaseCost: 50
+  damageBaseCost: 30
   healthBaseCost: 175
   movementSpeedBaseCost: 150
   bulletSpeedBaseCost: 100
   fireRateBaseCost: 100
-  costMultiplier: 1.75
+  costMultiplier: 2
   baseBulletDamage: 1
   baseHealth: 3
-  baseMovementSpeed: 5
+  baseMovementSpeed: 6
   baseBulletSpeed: 7
   baseTimeBetweenShots: 0.7
   damageIncrease: 1
