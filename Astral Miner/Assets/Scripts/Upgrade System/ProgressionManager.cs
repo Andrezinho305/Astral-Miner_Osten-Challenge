@@ -15,7 +15,8 @@ public class ProgressionManager : MonoBehaviour
     [SerializeField] private int fireRateBaseCost = 300;
 
     [Header("Cost Scaling")]
-    [SerializeField] private float costMultiplier = 1.25f;
+    [SerializeField] private float dmgCostMultiplier = 1.25f;
+    [SerializeField] private float generalcostMultiplier = 1.25f;
 
     [Header("Player Base Stats")]
     [SerializeField] private int baseBulletDamage = 1;
@@ -27,8 +28,8 @@ public class ProgressionManager : MonoBehaviour
     [Header("Player Upgrade Values")]
     [SerializeField] private int damageIncrease = 1;
     [SerializeField] private int healthIncrease = 1;
-    [SerializeField] private float movementSpeedIncrease = 0.5f;
-    [SerializeField] private float bulletSpeedIncrease = 1f;
+    [SerializeField] private float movementSpeedIncrease = 1f;
+    [SerializeField] private float bulletSpeedMultiplier = 1.25f;
     [SerializeField] private float fireRateMultiplier = 0.9f;
 
     [SerializeField] private WorldDificultyManager worldDifficultyManager;
@@ -189,6 +190,11 @@ public class ProgressionManager : MonoBehaviour
         int baseCost = GetBaseCost(upgradeType);
         int totalLevel = GetTotalUpgradeLevel(upgradeType);
 
+        float costMultiplier =
+            upgradeType == PlayerUpgradeType.BulletDamage
+            ? dmgCostMultiplier
+            : generalcostMultiplier;
+
         float scaledCost =
             baseCost *
             Mathf.Pow(costMultiplier, totalLevel);
@@ -270,8 +276,8 @@ public class ProgressionManager : MonoBehaviour
             totalMovementUpgrades * movementSpeedIncrease;
 
         float finalBulletSpeed =
-            baseBulletSpeed +
-            totalBulletSpeedUpgrades * bulletSpeedIncrease;
+            baseBulletSpeed *
+            Mathf.Pow(bulletSpeedMultiplier, totalBulletSpeedUpgrades);
 
         float finalTimeBetweenShots =
             baseTimeBetweenShots *
@@ -384,7 +390,7 @@ public class ProgressionManager : MonoBehaviour
 
             totalCost += Mathf.RoundToInt(
                 damageBaseCost *
-                Mathf.Pow(costMultiplier, level)
+                Mathf.Pow(dmgCostMultiplier, level)
             );
         }
 
@@ -397,7 +403,7 @@ public class ProgressionManager : MonoBehaviour
 
             totalCost += Mathf.RoundToInt(
                 healthBaseCost *
-                Mathf.Pow(costMultiplier, level)
+                Mathf.Pow(generalcostMultiplier, level)
             );
         }
 
@@ -410,7 +416,7 @@ public class ProgressionManager : MonoBehaviour
 
             totalCost += Mathf.RoundToInt(
                 movementSpeedBaseCost *
-                Mathf.Pow(costMultiplier, level)
+                Mathf.Pow(generalcostMultiplier, level)
             );
         }
 
@@ -423,7 +429,7 @@ public class ProgressionManager : MonoBehaviour
 
             totalCost += Mathf.RoundToInt(
                 bulletSpeedBaseCost *
-                Mathf.Pow(costMultiplier, level)
+                Mathf.Pow(generalcostMultiplier, level)
             );
         }
 
@@ -436,7 +442,7 @@ public class ProgressionManager : MonoBehaviour
 
             totalCost += Mathf.RoundToInt(
                 fireRateBaseCost *
-                Mathf.Pow(costMultiplier, level)
+                Mathf.Pow(generalcostMultiplier, level)
             );
         }
 

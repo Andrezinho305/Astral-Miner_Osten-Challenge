@@ -3017,10 +3017,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldDificultyManager
   worldLevel: 0
-  enemyHealthMultiplier: 6
+  enemyHealthMultiplier: 4
   enemyMoneyMultiplier: 2
-  asteroidHealthMultiplier: 7
-  asteroidMoneyMultiplier: 2
+  asteroidHealthMultiplier: 5
+  asteroidMoneyMultiplier: 3
 --- !u!1 &772469318
 GameObject:
   m_ObjectHideFlags: 0
@@ -10388,12 +10388,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProgressionManager
   moneyController: {fileID: 674298293}
   respawnManager: {fileID: 1916555330}
-  damageBaseCost: 30
-  healthBaseCost: 175
-  movementSpeedBaseCost: 150
+  damageBaseCost: 50
+  healthBaseCost: 150
+  movementSpeedBaseCost: 125
   bulletSpeedBaseCost: 100
   fireRateBaseCost: 100
-  costMultiplier: 2
+  dmgCostMultiplier: 1.25
+  generalcostMultiplier: 2
   baseBulletDamage: 1
   baseHealth: 3
   baseMovementSpeed: 6
@@ -10401,8 +10402,8 @@ MonoBehaviour:
   baseTimeBetweenShots: 0.7
   damageIncrease: 1
   healthIncrease: 1
-  movementSpeedIncrease: 0.5
-  bulletSpeedIncrease: 1
+  movementSpeedIncrease: 1
+  bulletSpeedMultiplier: 1.25
   fireRateMultiplier: 0.9
   worldDifficultyManager: {fileID: 750404385}
   OnProgressionChanged:
