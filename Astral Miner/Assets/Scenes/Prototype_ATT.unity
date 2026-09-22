@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce2c8d695dd1ef408e99e5e79c449a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  ambience: {fileID: 8300000, guid: 23837d1f64344c545ae552610c694730, type: 3}
+  ambience: {fileID: 8300000, guid: 938d6c5fc08e1464395e4a87996a59c5, type: 3}
   asteroidexplosion: {fileID: 8300000, guid: 7daf770ca28971e4a8c96f0db17aa440, type: 3}
   engine: {fileID: 8300000, guid: 355a8cf893b4da74ab96f441711cfab9, type: 3}
   impact: {fileID: 8300000, guid: 44cde41128d924d4ba96a047b72cf6fe, type: 3}
@@ -2462,7 +2462,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8579312522709291300, guid: 86ca0d7a226ef434f804e05d87d3b095, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 23837d1f64344c545ae552610c694730, type: 3}
+  m_Resource: {fileID: 8300000, guid: 938d6c5fc08e1464395e4a87996a59c5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
